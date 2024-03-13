@@ -22,8 +22,8 @@ app.get("/", (req, res) => {
 
 app.post("/", (req, res) => {
     const { title, content } = req.body
-    const header = Buffer.from(fs.readFileSync(path.join(__dirname, "/views/content/header.txt")), "hex").toString()
-    const footer = Buffer.from(fs.readFileSync(path.join(__dirname, "/views/content/footer.txt")), "hex").toString()
+    const header = Buffer.from(fs.readFileSync(path.join(__dirname, "/views/content/header.ejs")), "hex").toString()
+    const footer = Buffer.from(fs.readFileSync(path.join(__dirname, "/views/content/footer.ejs")), "hex").toString()
 
     const data = header + `<h1>${title}</h1>` + content + footer
     const slugifiedTitle = slugify(title, { lower: true, replacement: '-', remove: /[*+~.()'"!?:@]/g });
